@@ -31,12 +31,12 @@ apply plugin: "jacoco"
 
 jar {
     manifest {
-        attributes 'Main-Class': 'ohtu.main.Main'
+        attributes 'Main-Class': 'main.Main'
     }
 }
 
 // Define the main class for the application
-mainClassName = 'ohtu.main.Main'
+mainClassName = 'main.Main'
 
 jacocoTestReport {
     reports {

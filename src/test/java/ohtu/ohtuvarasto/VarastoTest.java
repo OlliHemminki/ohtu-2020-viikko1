@@ -65,4 +65,69 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void negatiivinenTilavuus(){
+        Varasto uusi = new Varasto(-10);
+        assertEquals(0, uusi.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenTilavuusKuormitetusti(){
+        Varasto uusi = new Varasto(-10, 0);
+        assertEquals(0, uusi.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void tilavuusOikeinKuormitetussaKonstruktorissa(){
+        Varasto uusi = new Varasto(123, 0);
+        assertEquals(123, uusi.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenAlkusaldoNollaksi(){
+        Varasto uusi = new Varasto(100, -10);
+        assertEquals(0, uusi.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenLisaysEiMuutaSaldoa(){
+        varasto.lisaaVarastoon(4);
+        assertEquals(4, varasto.getSaldo(), vertailuTarkkuus);
+        varasto.lisaaVarastoon(-3);
+        assertEquals(4, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void saldoKorkeintaanTilavuus(){
+        varasto.lisaaVarastoon(123);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenOttoEiOnnistu(){
+        varasto.lisaaVarastoon(8);
+        assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+        varasto.otaVarastosta(-2);
+        assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void voidaanOttaaVainSaldonVerran(){
+        varasto.lisaaVarastoon(8);
+        assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+        double otto = varasto.otaVarastosta(13);
+        assertEquals(8, otto, vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void merkkijonoesitysToimii(){
+        Varasto uudehko = new Varasto(10);
+        uudehko.lisaaVarastoon(7);
+        assertEquals(7, uudehko.getSaldo(), vertailuTarkkuus);
+        assertEquals(10, uudehko.getTilavuus(), vertailuTarkkuus);
+        String haluttu = "saldo = 7.0, vielä tilaa 3.0";
+        String palautettu = uudehko.toString();
+        assertTrue(haluttu.equals(palautettu));
+    }
 }

@@ -128,6 +128,6 @@ public class VarastoTest {
         assertEquals(10, uudehko.getTilavuus(), vertailuTarkkuus);
         String haluttu = "saldo = 7.0, vielä tilaa 3.0";
         String palautettu = uudehko.toString();
-        assertFalse(haluttu.equals(palautettu));
+        assertTrue(haluttu.equals(palautettu));
     }
 }

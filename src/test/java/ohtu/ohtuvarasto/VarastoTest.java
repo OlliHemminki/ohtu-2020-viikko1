@@ -67,28 +67,28 @@ public class VarastoTest {
 
     @Test
     public void negatiivinenTilavuus(){
-        Varasto uusi = new Varasto(-10);
-        assertEquals(0, uusi.getTilavuus(), vertailuTarkkuus);
+        Varasto uusi1 = new Varasto(-10);
+        assertEquals(0, uusi1.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
     public void negatiivinenTilavuusKuormitetusti(){
-        Varasto uusi = new Varasto(-10, 0);
-        assertEquals(0, uusi.getTilavuus(), vertailuTarkkuus);
+        Varasto uusi2 = new Varasto(-10, 0);
+        assertEquals(0, uusi2.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
     public void tilavuusOikeinKuormitetussaKonstruktorissa(){
-        Varasto uusi = new Varasto(123, 0);
-        assertEquals(123, uusi.getTilavuus(), vertailuTarkkuus);
+        Varasto uusi3 = new Varasto(123, 0);
+        assertEquals(123, uusi3.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
     public void negatiivinenAlkusaldoNollaksi(){
-        Varasto uusi = new Varasto(100, -10);
-        assertEquals(0, uusi.getSaldo(), vertailuTarkkuus);
+        Varasto uusi4 = new Varasto(100.0, -10.0);
+        assertTrue(uusi4.getSaldo() == 0.0);
     }
-
+    
     @Test
     public void negatiivinenLisaysEiMuutaSaldoa(){
         varasto.lisaaVarastoon(4);

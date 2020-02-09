@@ -5,6 +5,27 @@ import ohtu.ohtuvarasto.Varasto;
 public class Main {
 
     public static void main(String[] args) {
+    	
+    	for(int i = 0; i < 10; i++)
+    	{
+    		for(int j = 0; j<10; j++) {
+    			System.out.println("Silmukkaehdon rikkominen (" + i + "," + j + ")");
+    		}
+    	}
+    	
+    	if(true) {
+    		if(true) {
+    			if(true) {
+    				System.out.println("Kaksi sisäkkäistä iffiä");
+    			} else {
+    				System.out.println("Kaksi sisäkkäistä iffiä");
+    			}
+    		} else {
+    			System.out.println("Kaksi sisäkkäistä iffiä");
+    		}
+    	} else {
+    		System.out.println("Kaksi sisäkkäistä iffiä");
+    	}
 
         Varasto mehua = new Varasto(100.0);
         Varasto olutta = new Varasto(100.0, 20.2);
